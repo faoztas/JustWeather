@@ -36,7 +36,7 @@ public interface ApiInterface {
 
     @GET("forecast?")
     Call<WeatherForecast> getForecast(
-            @Query("q") String cityName,
+            @Query("q") String cityNamee,
             @Query("units") String units,
             @Query("lang") String lang,
             @Query("appid") String appid
