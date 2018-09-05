@@ -36,8 +36,9 @@
             android:id="@+id/imageIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_below="@+id/editCitySearch"
-            android:layout_toStartOf="@+id/editCitySearch"
+            android:layout_marginStart="45dp"
             app:srcCompat="@drawable/d01" />
 
         <TextView
