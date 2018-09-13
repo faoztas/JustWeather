@@ -23,4 +23,18 @@ public class MainActivity extends AppCompatActivity {
         editCitySearch = (EditText)findViewById(R.id.editCitySearch);
         imageIcon = (ImageView)findViewById(R.id.imageIcon);
     }
+    //give param models
+    public getData(){
+    //param=ApiClient().provideApi("http....")
+    //data=param.(Get method call)
+    //data.enqueue(new Callback<>(){
+    ...
+        @Override
+        onResponse()
+        @Override
+        onFailure()
+    ...
+        ..gerisini aynı mantıkla doldurup yaparsın
+    ...})    
+    }
 }
