@@ -1,11 +1,10 @@
+
 package com.example.furka.justweather.Models.CurrentWeather;
 
-import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Sys implements Serializable
-{
+public class Sys {
 
     @SerializedName("type")
     @Expose
@@ -25,7 +24,6 @@ public class Sys implements Serializable
     @SerializedName("sunset")
     @Expose
     private Integer sunset;
-    private final static long serialVersionUID = 3847304570772477739L;
 
     public Integer getType() {
         return type;

@@ -12,21 +12,55 @@
         android:background="@drawable/forest"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/editCitySearch"
+            android:layout_below="@+id/imageIcon"
+            android:text="Parçalı Az Bulutlu"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textHum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/editCitySearch"
+            android:layout_below="@+id/textDesc"
+            android:text="Nem %82"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textWind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textDeg"
+            android:layout_alignTop="@+id/textHum"
+            android:text="Rüzgar 7 Km/S"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/editCitySearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
             android:ems="10"
-            android:hint="Which City?"
-            android:inputType="textPersonName"
+            android:hint='Example: "Trabzon"'
+            android:inputType="text"
             android:singleLine="true"
             android:textColor="@android:color/background_light"
             android:textColorHint="@android:color/darker_gray" />
@@ -35,8 +69,9 @@
             android:id="@+id/imageIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editCitySearch"
-            android:layout_toStartOf="@+id/editCitySearch"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/editCitySearch"
+            android:layout_marginTop="80dp"
             app:srcCompat="@drawable/d01" />
 
         <TextView
@@ -44,18 +79,41 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/editCitySearch"
-            android:layout_centerHorizontal="true"
-            android:text="Trabzon 28°C"
-            android:textAlignment="center"
+            android:layout_toEndOf="@+id/imageIcon"
+            android:text="Trabzon"
+            android:textAlignment="viewStart"
             android:textColor="@android:color/holo_blue_light"
             android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/textDeg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editCitySearch"
+            android:layout_toStartOf="@+id/textRF"
+            android:text="22°C"
+            android:textAlignment="viewEnd"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/textClo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textRF"
+            android:layout_below="@+id/imageIcon"
+            android:text="%40"
+            android:textAlignment="viewEnd"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/textRF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_below="@+id/editCitySearch"
-            android:layout_toEndOf="@+id/editCitySearch"
+            android:layout_marginEnd="20dp"
             android:text="RealFeel"
             android:textColor="@android:color/holo_orange_dark"
             android:textSize="12sp" />
@@ -64,11 +122,30 @@
             android:id="@+id/textFeel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textCity"
+            android:layout_alignBottom="@+id/textCity"
             android:layout_alignEnd="@+id/textRF"
             android:text="32°C"
+            android:textAlignment="viewEnd"
             android:textColor="@android:color/holo_orange_dark"
             android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/getDataButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textRF"
+            android:layout_alignTop="@+id/editCitySearch"
+            android:onClick="getData"
+            android:text="Search"
+            android:textAlignment="center" />
+
+        <ImageView
+            android:id="@+id/imageWind"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
+            android:layout_alignEnd="@+id/textRF"
+            android:layout_alignTop="@+id/textHum"
+            app:srcCompat="@drawable/imgwind" />
 
     </RelativeLayout>
 

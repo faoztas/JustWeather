@@ -1,15 +1,14 @@
+
 package com.example.furka.justweather.Models.CurrentWeather;
 
-import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Main implements Serializable
-{
+public class Main {
 
     @SerializedName("temp")
     @Expose
-    private Integer temp;
+    private Double temp;
     @SerializedName("pressure")
     @Expose
     private Integer pressure;
@@ -18,17 +17,16 @@ public class Main implements Serializable
     private Integer humidity;
     @SerializedName("temp_min")
     @Expose
-    private Integer tempMin;
+    private Double tempMin;
     @SerializedName("temp_max")
     @Expose
-    private Integer tempMax;
-    private final static long serialVersionUID = -796956905277762292L;
+    private Double tempMax;
 
-    public Integer getTemp() {
+    public Double getTemp() {
         return temp;
     }
 
-    public void setTemp(Integer temp) {
+    public void setTemp(Double temp) {
         this.temp = temp;
     }
 
@@ -48,19 +46,19 @@ public class Main implements Serializable
         this.humidity = humidity;
     }
 
-    public Integer getTempMin() {
+    public Double getTempMin() {
         return tempMin;
     }
 
-    public void setTempMin(Integer tempMin) {
+    public void setTempMin(Double tempMin) {
         this.tempMin = tempMin;
     }
 
-    public Integer getTempMax() {
+    public Double getTempMax() {
         return tempMax;
     }
 
-    public void setTempMax(Integer tempMax) {
+    public void setTempMax(Double tempMax) {
         this.tempMax = tempMax;
     }
 

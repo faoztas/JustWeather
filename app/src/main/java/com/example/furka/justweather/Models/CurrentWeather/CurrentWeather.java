@@ -1,12 +1,11 @@
+
 package com.example.furka.justweather.Models.CurrentWeather;
 
-import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class CurrentWeather implements Serializable
-{
+public class CurrentWeather {
 
     @SerializedName("coord")
     @Expose
@@ -44,7 +43,6 @@ public class CurrentWeather implements Serializable
     @SerializedName("cod")
     @Expose
     private Integer cod;
-    private final static long serialVersionUID = -3236371969543074635L;
 
     public Coord getCoord() {
         return coord;
