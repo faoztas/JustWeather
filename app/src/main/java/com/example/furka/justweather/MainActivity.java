@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.furka.justweather.Models.CurrentWeather.CurrentWeather;
 import com.example.furka.justweather.Models.UVindex;
+import com.example.furka.justweather.Models.WeatherForecast.WeatherForecast;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -29,12 +30,13 @@ public class MainActivity extends AppCompatActivity {
     Button button;
 
     String city,icon;
-    int deg;
+    int deg=0;
 
     ApiInterface apiInterface;
 
     Call<CurrentWeather> call;
     Call<UVindex> UVcall;
+    Call<WeatherForecast> Fcall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +59,10 @@ public class MainActivity extends AppCompatActivity {
         apiInterface = ApiClient.getMyRetrofit(ApiClient.mainUrl).create(ApiInterface.class);
     }
 
+    public static double myUVIndex = 0.0;
+
     public double getUV(double lat, double lon){
         UVcall=apiInterface.getUVIndex(lon,lat,ApiClient.apiKey);
-        double myUVIndex;
 
         UVcall.enqueue(new Callback<UVindex>() {
             @Override
@@ -69,7 +72,9 @@ public class MainActivity extends AppCompatActivity {
 
                 try {
                     for (int i = 0; i < UVList.size(); i++) {
-                        myUVIndex = UVList.get(i).getValue();
+                        double d = UVList.get(i).getValue();
+                        myUVIndex = d;
+                        Log.i("UV" , String.valueOf(d));
                     }
                 }
                 catch (Exception e){
@@ -99,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         final double b = 237.7;
         double T=temp;
         double H=hum;
-        //this equation to mesure the dew point temperature
+
         double f = ((a * T) / (b + T)) + Math.log(H);
         return (b * f) / (a - f);
     }
@@ -120,8 +125,8 @@ public class MainActivity extends AppCompatActivity {
 
     public Double setRealFeel(Double windSpeed, Integer pressure, Double temp, Double uvIndex, Double hum){
         Double realFeel;
-        Double T=(temp);
-        Double W=windSpeed;
+        Double T=cTOf(temp);
+        Double W=getWindmph(windSpeed);
         Double UV=uvIndex;
         Double H=hum;
         Double Wa,P2=0.0,WSP2,WSP1,SI2,Da,H2;
@@ -159,10 +164,10 @@ public class MainActivity extends AppCompatActivity {
 	    else{
             realFeel=T-WSP1+SI2+H2-P2;
         }
-        return Math.ceil(fTOc(realFeel));
+        return fTOc(realFeel);
     }
 
-    public void setWeather(){
+    public void setWeatherNow(){
         city = String.valueOf(editCitySearch.getText());
         textCity.setText(city);
         call=apiInterface.getWeather(String.valueOf(city),"metric","tr",ApiClient.apiKey);
@@ -179,6 +184,10 @@ public class MainActivity extends AppCompatActivity {
                         int pressure = nowWeatherList.get(i).getMain().getPressure();
                         double wind = nowWeatherList.get(i).getWind().getSpeed();
                         int humidity = nowWeatherList.get(i).getMain().getHumidity();
+                        double lat = nowWeatherList.get(i).getCoord().getLat();
+                        double lon = nowWeatherList.get(i).getCoord().getLon();
+                        double realFeel = setRealFeel(wind,pressure,temp,getUV(lat,lon),(double)humidity);
+                        Log.i("RealFeel: ", String.valueOf(realFeel));
 
 
 
@@ -187,11 +196,19 @@ public class MainActivity extends AppCompatActivity {
                         textClo.setText("%" + nowWeatherList.get(i).getClouds().getAll());
                         textHum.setText("Nem: %" + nowWeatherList.get(i).getMain().getHumidity());
                         textWind.setText("Rüzgar: " + String.valueOf(nowWeatherList.get(i).getWind().getSpeed()) + " m/sn");
-                        textFeel.setText(setRealFeel(getWindmph(wind),pressure,cTOf(temp),0.53, (double) humidity).toString() + "°C");
+                        textFeel.setText((int)Math.ceil(realFeel) + "°C");
+
                         icon = (nowWeatherList.get(i).getWeather().get(i).getIcon());
                         Picasso.get().load(ApiClient.iconUrl + icon + ".png").resize(100, 100).into(imageIcon);
-                        deg = nowWeatherList.get(i).getWind().getDeg();
-                        imageWind.setRotation(deg);
+
+                        if (nowWeatherList.get(i).getWind().getDeg()==null){
+                            imageWind.setImageResource(R.drawable.images);
+                        }
+                        else{
+                            deg = nowWeatherList.get(i).getWind().getDeg();
+                            imageWind.setImageResource(R.drawable.imgwind);
+                            imageWind.setRotation(deg);
+                        }
                     }
                 }
                 catch (Exception e){
@@ -207,7 +224,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void setForecast(){
+
+
+    }
+
     public void getData(View view) {
-        setWeather();
+        setWeatherNow();
     }
 }
