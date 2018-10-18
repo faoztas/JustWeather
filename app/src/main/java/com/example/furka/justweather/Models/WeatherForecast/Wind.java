@@ -1,12 +1,10 @@
 
 package com.example.furka.justweather.Models.WeatherForecast;
 
-import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Wind implements Serializable
-{
+public class Wind {
 
     @SerializedName("speed")
     @Expose
@@ -14,7 +12,6 @@ public class Wind implements Serializable
     @SerializedName("deg")
     @Expose
     private Double deg;
-    private final static long serialVersionUID = -6784384320420417769L;
 
     public Double getSpeed() {
         return speed;

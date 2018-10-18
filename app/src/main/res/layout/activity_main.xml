@@ -7,12 +7,13 @@
     tools:context=".MainActivity">
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/forest"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
@@ -26,7 +27,8 @@
             android:text="Parçalı Az Bulutlu"
             android:textAlignment="viewStart"
             android:textColor="@android:color/holo_blue_light"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/textHum"
@@ -37,7 +39,8 @@
             android:text="Nem %82"
             android:textAlignment="viewStart"
             android:textColor="@android:color/holo_blue_light"
-            android:textSize="24sp" />
+            android:textSize="20sp"
+            android:visibility="invisible"/>
 
         <TextView
             android:id="@+id/textWind"
@@ -48,7 +51,8 @@
             android:text="Rüzgar 7 Km/S"
             android:textAlignment="viewStart"
             android:textColor="@android:color/holo_blue_light"
-            android:textSize="24sp" />
+            android:textSize="20sp"
+            android:visibility="invisible"/>
 
         <EditText
             android:id="@+id/editCitySearch"
@@ -72,7 +76,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/editCitySearch"
             android:layout_marginTop="80dp"
-            app:srcCompat="@drawable/d01" />
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/textCity"
@@ -83,7 +87,8 @@
             android:text="Trabzon"
             android:textAlignment="viewStart"
             android:textColor="@android:color/holo_blue_light"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/textDeg"
@@ -94,7 +99,8 @@
             android:text="22°C"
             android:textAlignment="viewEnd"
             android:textColor="@android:color/holo_blue_dark"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:visibility="invisible"/>
 
         <TextView
             android:id="@+id/textClo"
@@ -105,7 +111,8 @@
             android:text="%40"
             android:textAlignment="viewEnd"
             android:textColor="@android:color/holo_blue_dark"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:visibility="invisible"/>
 
         <TextView
             android:id="@+id/textRF"
@@ -116,7 +123,8 @@
             android:layout_marginEnd="20dp"
             android:text="RealFeel"
             android:textColor="@android:color/holo_orange_dark"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:visibility="invisible"/>
 
         <TextView
             android:id="@+id/textFeel"
@@ -127,7 +135,8 @@
             android:text="32°C"
             android:textAlignment="viewEnd"
             android:textColor="@android:color/holo_orange_dark"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:visibility="invisible"/>
 
         <Button
             android:id="@+id/getDataButton"
@@ -145,8 +154,22 @@
             android:layout_height="35dp"
             android:layout_alignEnd="@+id/textRF"
             android:layout_alignTop="@+id/textHum"
-            app:srcCompat="@drawable/imgwind" />
+            app:srcCompat="@drawable/imgwind"
+            android:visibility="invisible"/>
 
     </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/myRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="380dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintVertical_bias="1.0" >
+
+    </android.support.v7.widget.RecyclerView>
 
 </android.support.constraint.ConstraintLayout>

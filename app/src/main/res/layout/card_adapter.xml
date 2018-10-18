@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="#000000"
+        android:id="@+id/card"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Trabzon"
+                    android:textAlignment="viewStart"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Parçalı Bulutlu"
+                    android:textAlignment="viewStart"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp" />
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="62"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:id="@+id/temp"
+                        android:textColor="#ffffff"
+                        android:textSize="40sp"/>
+
+                    <TextView
+                        android:id="@+id/degree"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_toEndOf="@+id/temp"
+                        android:layout_toRightOf="@+id/temp"
+                        android:text="°C"
+
+                        android:textColor="#ffffff"
+                        android:textSize="18sp" />
+
+                    <ImageView
+                        android:id="@+id/umbrella"
+                        android:layout_width="35dp"
+                        android:layout_height="55dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_toEndOf="@+id/degree"
+                        app:srcCompat="@drawable/imgwind" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100%"
+                        android:layout_toEndOf="@+id/umbrella"
+                        android:layout_toRightOf="@+id/umbrella"
+                        android:layout_marginTop="30dp"
+
+                        android:id="@+id/humidity"
+                        android:textColor="#ffffff"
+                        android:textSize="15sp"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/cloud"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/images" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="2018-10-17 21:00:00"
+                    android:textAlignment="viewEnd"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</android.support.constraint.ConstraintLayout>

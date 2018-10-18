@@ -1,12 +1,10 @@
 
 package com.example.furka.justweather.Models.WeatherForecast;
 
-import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Coord implements Serializable
-{
+public class Coord {
 
     @SerializedName("lat")
     @Expose
@@ -14,7 +12,6 @@ public class Coord implements Serializable
     @SerializedName("lon")
     @Expose
     private Double lon;
-    private final static long serialVersionUID = -8706965493260745518L;
 
     public Double getLat() {
         return lat;
